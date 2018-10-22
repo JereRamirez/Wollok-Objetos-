@@ -1,0 +1,18 @@
+import animales.*
+
+describe "Tests de animales" {
+	method vacaDe(peso) {
+		const vaca = new Vaca()
+		vaca.peso(peso)
+		return vaca
+	}
+	
+	test "Vaca de menos de 200 kg tiene hambre" {
+		var aurora = self.vacaDe(199)
+		assert.that(aurora.tieneHambre())
+	}
+	test "Vaca de 200 kg no tiene hambre" {
+		var milka = self.vacaDe(200)
+		assert.notThat(milka.tieneHambre())
+	}
+}

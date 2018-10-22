@@ -1,0 +1,21 @@
+import dispositivos.*
+
+describe "Tests de dispositivos" {
+	/* Genera un objeto falso que sólo responde si tiene hambre */
+	method animalConHambre(bool) =
+		object { 
+			method tieneHambre() = bool
+		}	
+	
+	test "Comedero inteligente puede atender a animal con hambre" {
+		const comedero = new ComederoInteligente()
+		const animalConHambre = self.animalConHambre(true)
+		assert.that(comedero.puedeAtenderA(animalConHambre))
+	}
+
+	test "Comedero inteligente no puede atender a animal sin hambre" {
+		const comedero = new ComederoInteligente()
+		const animalSinHambre = self.animalConHambre(false)
+		assert.notThat(comedero.puedeAtenderA(animalSinHambre))
+	}
+}
